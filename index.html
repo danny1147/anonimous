@@ -7,7 +7,7 @@
         body {
             text-align: center;
             font-family: Arial, sans-serif;
-            background: linear-gradient(to right, #ff99cc, #ff4da6);
+            background: linear-gradient(to right, #D2691E, #8B4513); /* chocolate gradient */
             height: 100vh;
             overflow: hidden;
             color: white;
@@ -41,20 +41,19 @@
             border-radius: 12px;
             cursor: pointer;
             position: absolute;
+            color: white;
         }
 
         #yesBtn {
             left: 30%;
             top: 50%;
-            background-color: #28a745;
-            color: white;
+            background-color: #8B4513; /* chocolate brown */
         }
 
         #noBtn {
             left: 55%;
             top: 50%;
-            background-color: #dc3545;
-            color: white;
+            background-color: #A0522D; /* lighter chocolate */
         }
 
         /* Heart animation */
@@ -84,13 +83,15 @@
 
 <body>
 
-    <!-- Intro Section -->
+    <!-- Intro Section with Valentine Question -->
     <h1>Hey My Princess, Mother of My Future Kids, My Lazy Head 😌💕</h1>
 
     <p>
         Guess who are now about <strong>390 days</strong> together! 🎉<br>
         Cheers to more better days ahead 💖
     </p>
+
+    <h2>Will you be my Valentine? 🌹🍫</h2>
 
     <div class="buttons">
         <button id="yesBtn">YES 💘</button>
@@ -109,7 +110,7 @@
         const body = document.body;
         const loveVideo = document.getElementById("loveVideo");
 
-        // Make NO run away
+        // Make NO run away forever
         noBtn.addEventListener("mouseover", () => {
             const x = Math.random() * (window.innerWidth - 100);
             const y = Math.random() * (window.innerHeight - 50);
@@ -134,24 +135,32 @@
             // Replace body content with romantic message
             document.body.innerHTML = `
                 <h1 style="margin-top:100px;">
-                    Hey baby, I just thought I would tell you how beautiful you are ❤️
+                    I knew my baby would not disappoint me ❤️
                 </h1>
                 <h2>
-                    You're my pride and I can't think of a life without you 💕
+                    You've made me the happiest man on earth and I will love you forever 💕
                 </h2>
                 <h2>
-                    I love you, my gorgeous baby 🌹💘
+                    You mean the world to me, I love you my little princess 🌹💘
                 </h2>
                 <button id="yesBtn">Click me for hearts 💖</button>
+                <button id="noBtn">NO 😅</button>
             `;
 
             const newYesBtn = document.getElementById("yesBtn");
+            const newNoBtn = document.getElementById("noBtn");
 
             // Show the video
             loveVideo.style.display = "block";
-
-            // Append video back to body
             document.body.appendChild(loveVideo);
+
+            // NO still runs away forever
+            newNoBtn.addEventListener("mouseover", () => {
+                const x = Math.random() * (window.innerWidth - 100);
+                const y = Math.random() * (window.innerHeight - 50);
+                newNoBtn.style.left = x + "px";
+                newNoBtn.style.top = y + "px";
+            });
 
             // Each click makes more hearts
             newYesBtn.addEventListener("click", () => {
