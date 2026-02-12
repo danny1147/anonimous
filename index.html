@@ -68,30 +68,46 @@
             0% { opacity: 1; transform: translateY(0) scale(1); }
             100% { opacity: 0; transform: translateY(-200px) scale(2); }
         }
+
+        /* Video styling */
+        #loveVideo {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 200px;
+            border-radius: 12px;
+            display: none;
+            z-index: 100;
+        }
     </style>
 </head>
 
 <body>
 
-    <!-- Updated Intro Section -->
+    <!-- Intro Section -->
     <h1>Hey My Princess, Mother of My Future Kids, My Lazy Head 😌💕</h1>
 
     <p>
-        Guess who… about <strong>390 days</strong> together! 🎉<br>
+        Guess who are now about <strong>390 days</strong> together! 🎉<br>
         Cheers to more better days ahead 💖
     </p>
-
-    <h2>Now… will you be my Valentine? 🌹💘</h2>
 
     <div class="buttons">
         <button id="yesBtn">YES 💘</button>
         <button id="noBtn">NO 😅</button>
     </div>
 
+    <!-- Small love video -->
+    <video id="loveVideo" autoplay muted loop>
+        <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+        Your browser does not support HTML video.
+    </video>
+
     <script>
         const noBtn = document.getElementById("noBtn");
         const yesBtn = document.getElementById("yesBtn");
         const body = document.body;
+        const loveVideo = document.getElementById("loveVideo");
 
         // Make NO run away
         noBtn.addEventListener("mouseover", () => {
@@ -110,27 +126,32 @@
             heart.style.top = window.innerHeight - 50 + "px";
             body.appendChild(heart);
 
-            setTimeout(() => {
-                heart.remove();
-            }, 2000);
+            setTimeout(() => heart.remove(), 2000);
         }
 
         // YES action
         yesBtn.addEventListener("click", () => {
+            // Replace body content with romantic message
             document.body.innerHTML = `
-                <h1 style="margin-top:150px;">
+                <h1 style="margin-top:100px;">
                     Hey baby, I just thought I would tell you how beautiful you are ❤️
                 </h1>
                 <h2>
                     You're my pride and I can't think of a life without you 💕
                 </h2>
                 <h2>
-                    So… will you be my Valentine, my gorgeous baby? 🌹💘
+                    I love you, my gorgeous baby 🌹💘
                 </h2>
                 <button id="yesBtn">Click me for hearts 💖</button>
             `;
 
             const newYesBtn = document.getElementById("yesBtn");
+
+            // Show the video
+            loveVideo.style.display = "block";
+
+            // Append video back to body
+            document.body.appendChild(loveVideo);
 
             // Each click makes more hearts
             newYesBtn.addEventListener("click", () => {
@@ -139,10 +160,8 @@
                 }
             });
 
-            // Start some hearts immediately
+            // Start hearts automatically
             const heartInterval = setInterval(createHeart, 200);
-
-            // Stop automatic hearts after 5 seconds
             setTimeout(() => clearInterval(heartInterval), 5000);
         });
     </script>
